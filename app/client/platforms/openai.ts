@@ -119,7 +119,8 @@ export class ChatGPTApi implements LLMApi {
       ...useChatStore.getState().currentSession().mask.modelConfig,
       ...{
         model: options.config.model,
-        providerName: options.config.providerName,
+        // providerName: options.config.providerName,
+        providerName: ServiceProvider.Azure,
       },
     };
 
@@ -169,8 +170,10 @@ export class ChatGPTApi implements LLMApi {
         );
         chatPath = this.path(
           Azure.ChatPath(
-            (model?.displayName ?? model?.name) as string,
-            useCustomConfig ? useAccessStore.getState().azureApiVersion : "",
+            // (model?.displayName ?? model?.name) as string,
+            // useCustomConfig ? useAccessStore.getState().azureApiVersion : "",
+            "Anki",
+            "2024-06-01",
           ),
         );
       } else {
